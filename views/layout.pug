@@ -1,7 +1,14 @@
 doctype html
 html
   head
-    title= title
+    title= gReads
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
+      header(class="main-header")
+        nav
+          img(src="../public/images/book_logo.png" alt="book-logo" class="header-logo")
+        h1(class="main-title") gReads
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="../public/javascripts/index.js")
