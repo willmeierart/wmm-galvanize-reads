@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  header(class="main-header")
+    nav
+      img(src="/images/book_logo.png", alt="book-logo", class="header-logo")
+      h1(class="main-title") gReads
+  main
+    section.sub-header
+      div.authors-header
+        img
+      div.books-header
+        img
+    section.books-list
+      each book in books
+        img.book-cover(src=book.cover_url)
+        div.each-book-header
+          h2.book-title=book.title
+          h3.author=book.author
+          h3.genre=book.genre
+        p.book-description=book.description
+  footer

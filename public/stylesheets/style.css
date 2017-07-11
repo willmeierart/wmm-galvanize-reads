@@ -1,8 +1,59 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: grid;
 }
 
 a {
   color: #00B7FF;
+}
+
+header{
+  width: 100vw;
+  height:10%;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:1em;
+  background: white;
+}
+
+nav{
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr;
+}
+
+.header-logo{
+  max-height: 50px;
+  grid-column: 1/2;
+  margin-left: 1em;
+}
+
+.main-title{
+  grid-column: 2/3;
+  font-size: 200%;
+  margin:0;
+}
+
+main{
+  background:brown;
+  width:100vw;
+  height:100vh;
+}
+
+.home-authors-container{
+
+}
+
+.home-books-container{
+
+}
+
+footer{
+  width:100vw;
+  height:10%;
+  position: fixed;
+  bottom:0;
+  z-index: 2;
+  background: white;
 }
