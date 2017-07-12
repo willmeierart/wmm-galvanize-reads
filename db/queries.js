@@ -40,6 +40,9 @@ module.exports = {
   },
   getAllAuthors: function(){
     return knex.select('*').from('authors')
+  },
+  deleteBook: function(id){
+    return knex('books').where('id', id).del()
   }
   // addJoiner: function(){
   //   return knex.select('*').from('book_authors')

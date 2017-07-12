@@ -30,7 +30,6 @@ $(() => {
     return title && genre && description && url
   }
 
-
   $('.newbook-form').submit((e) => {
     e.preventDefault()
     console.log($('#input-title').first().val());
@@ -48,33 +47,18 @@ $(() => {
         return res.id
       })
     }
+  })
 
-    // .then((id) => {
-      // Promise.all(postJoin)
-      // function postJoin() {
-      //   return authorIDs.map((each) => {
-      //     new Promise((resolve, reject) => {
-      //       const bookAuthorObj = {
-      //         author_id: each,
-      //         book_id: id
-      //       }
-      //       $.post(`${baseURL}book_authors`, bookAuthorObj).then((res)=>{
-      //         resolve(res)
-      //       })
-      //     })
-      //   })
-      // }
-    //   return id
-    // })
-
-
+  $('.remove-btn').click((e)=>{
+    e.preventDefault()
+    console.log(e.target)
   })
 
   function getHostURL() {
     if (window.location.host.indexOf('localhost') != -1) {
       return 'http://localhost:3000/'
     } else {
-      return 'http://wmm-galvanize-reads.herokuapp.com/'
+      return 'https://wmm-galvanize-reads.herokuapp.com/'
     }
   }
 })

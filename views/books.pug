@@ -27,7 +27,7 @@ block content
               span.book-header-btn
                 a.edit-btn edit
               span.book-header-btn
-                a.remove-btn remove
+                a(class="remove-btn", data-id=book.book_id) remove
               h2.book-title=book.title
               each author in book.authors
                 div.author= author.first_name + ' ' + author.last_name

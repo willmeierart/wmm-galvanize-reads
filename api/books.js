@@ -58,6 +58,11 @@ router.post('/', function(req, res, next){
   console.log(req.body);
   queries.newBook(req.body).then(book=>res.json(book))
 })
+// router.delete('/:id', function(req,res,next)=>{
+//   queries.deleteBook(req.params.id).then(book=>res.json(book))
+// })
+
+
 // router.post('/', function (req,res,next){
 //   queries.addJoiner(req.body).then(book=>book)
 // })
