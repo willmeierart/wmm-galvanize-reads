@@ -5,10 +5,10 @@
 * [x] Identify Company
 * [x] List all Books
 	* [x] Migrations (not a story)
-	* [ ] Check-in with an Instructor
+	* [x] Check-in with an Instructor
 	* [x] Seeds (not a story)
-	* [ ] Check-in with an Instructor
-* [ ] Check-in with an Instructor
+	* [x] Check-in with an Instructor
+* [x] Check-in with an Instructor
 
 ## Books - Interaction 2
 

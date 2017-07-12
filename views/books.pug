@@ -3,20 +3,26 @@ extends layout
 block content
   header(class="main-header")
     nav
-      img(src="/images/book_logo.png", alt="book-logo", class="header-logo")
-      h1(class="main-title") gReads
+      img(src="/images/better-logo.png", alt="book-logo", class="header-logo")
+      a(class="main-title")
+        h1 gReads
+      div.nav-accent-img-container
   main
     section.sub-header
       div.authors-header
         img
       div.books-header
         img
-    section.books-list
-      each book in books
-        img.book-cover(src=book.cover_url)
-        div.each-book-header
-          h2.book-title=book.title
-          h3.author=book.author
-          h3.genre=book.genre
-        p.book-description=book.description
+    section.main-contain-books
+      section.books-list
+        each book in books
+          div.each-book-sec
+            div.book-cover-container
+              img.book-cover(src=book.cover)
+            div.each-book-header
+              h2.book-title=book.title
+              each author in book.authors
+                div.author= author.first_name + ' ' + author.last_name
+              h3.genre=book.genre
+              p.book-description=book.description
   footer

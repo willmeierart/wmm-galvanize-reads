@@ -3,9 +3,22 @@ extends layout
 block content
   header(class="main-header")
     nav
-      img(src="/images/book_logo.png", alt="book-logo", class="header-logo")
-      h1(class="main-title") gReads
+      img(src="/images/better-logo.png", alt="book-logo", class="header-logo")
+      a(class="main-title")
+        h1 gReads
+      div.nav-accent-img-container
+
   main
-    container.authors-home
-    container.books-home
+    section.main-home
+      section.home-container
+        container.authors-home
+          container.authors-book-img-l
+            img(src="/images/wallacenco.jpg", alt="wallace-n-co", class="home-main-img")
+          h1
+            a authors
+        container.books-home
+          container.authors-book-img-r
+            img(src="/images/murakami-books.jpeg", alt="murakami-books", class="home-main-img")
+          h1
+            a books
   footer
