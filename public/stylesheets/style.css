@@ -50,7 +50,7 @@ nav{
 
 .main-title{
   grid-column: 2/3;
-  margin-left:-1em;
+  /*margin-left:-1em;*/
   font-family: 'Alice', serif;
 }
 
@@ -76,7 +76,13 @@ main{
   background:brown;
   width:100vw;
   height:10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
+
+
 
 
 footer{
@@ -134,12 +140,17 @@ footer{
 
 .authors-home{
     background-image: url('/images/bookopenL.jpg');
+    background-size: cover;
+    background-position: right;
 
 }
 
 .books-home{
     background-image: url('/images/bookopenR.jpg');
     /*background-blend-mode: multiply;*/
+    background-size: cover;
+    background-position: left;
+
 }
 
 .authors-book-img-l, .authors-book-img-r{
@@ -179,6 +190,33 @@ footer{
   background-size:cover;
   width:100%;
   height:100%;
+
+}
+
+.authors-header, .books-header{
+  /*display: flex;*/
+  display: inline-block;
+  background:white;
+  margin:1em;
+  padding:.5em;
+  height:51%;
+  border-radius:2px;
+
+  /*line-height: 50%;*/
+  /*align-items: center;*/
+}
+
+.subheader > div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  width:200%;
+
+}
+
+.add-btn{
+  /*align-content:flex-end;*/
 }
 
 .books-list{
@@ -191,36 +229,78 @@ footer{
   display: grid;
   align-self:center;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr;
   width:80%;
   /*height:60%;*/
   background:white;
   margin:3em;
+  border-radius:2px;
 
 }
 
 .book-cover-container{
   grid-column:1/2;
-  grid-row: 1/3;
-  width:200px;
-  overflow: hidden
+  grid-row: 1/2;
+  max-width:200px;
+  margin:20px 10px 10px 20px;
+  /*overflow: hidden*/
 
 }
 
 .book-cover{
-  object-fit: fill;
-  width:200px;
-  margin:20px;
+  object-fit: contain;
+  max-width:200px;
+
 }
 
 .each-book-header{
   font-family: 'Lora', serif;
   grid-column: 2/4;
   grid-row: 1/2;
-  margin:20px;
+  margin:20px 20px 20px 10px;
 }
 
 .book-description{
   grid-column:2/4;
   grid-row: 2/3;
+}
+
+.edit-btn, .remove-btn{
+  /*float:right;*/
+  margin:.5em;
+  grid-column:3/4;
+}
+
+.book-description{
+  white-space: normal;
+  grid-row:2/3;
+  grid-column:1/4;
+  margin:10px 20px 20px 20px;
+  text-align: justify;
+}
+
+/*newbook*/
+
+.newbook-main{
+  display: flex;
+  /*flex-direction:column;*/
+  width:50%;
+  align-items:space-around;
+  align-content:space-around;
+  justify-content: space-around;
+  height:100vh;
+  align-self: center;
+}
+.newbook-main *{
+  width:100%;
+  margin:10px;
+}
+
+.author-list{
+  width:80%;
+  display: flex;
+}
+
+.remove-btn-form{
+  /*float:right;*/
 }

@@ -19,15 +19,6 @@ const consolidate = (books, res)=>{
       allBooksWithAuthors.push(bookWithAuthors)
       fullBooksInfo[book.title] = bookWithAuthors
     }
-    // fullBooksInfo[book.id].authors.push(
-    //     {
-    //       id: book.author_id,
-    //       first_name: book.first_name,
-    //       last_name: book.last_name,
-    //       biography: book.biography,
-    //       portrait: book.portrait_url
-    //     }
-    //   )
     if(!authorAcc[book.author_id]){
       authorAcc[book.author_id] = true
       fullBooksInfo[book.title].authors.push(
@@ -46,15 +37,32 @@ const consolidate = (books, res)=>{
   res.render('books', {"books": allBooksWithAuthors})
 }
 
-
-
 router.get('/', function(req,res,next){
   queries.getAllBooks().then((books)=>{
     consolidate(books,res)
   })
 })
+router.get('/new', function (req,res){
+  queries.getAllAuthors().then((authors)=>{
+    // res.json(authors)
+    res.render('newbook', {'authors': authors})
+  })
+
+})
 router.get('/:id', function(req, res, next) {
-  // res.render('books', { title: 'gReads | BOOKS' });
-});
+  queries.getOneBook(req.params.id).then((books)=>{
+    consolidate(books,res)
+  })
+})
+router.post('/', function(req, res, next){
+  console.log(req.body);
+  queries.newBook(req.body).then(book=>res.json(book))
+})
+// router.post('/', function (req,res,next){
+//   queries.addJoiner(req.body).then(book=>book)
+// })
+
+
+
 
 module.exports = router;

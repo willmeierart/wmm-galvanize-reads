@@ -9,10 +9,14 @@ block content
       div.nav-accent-img-container
   main
     section.sub-header
-      div.authors-header
-        img
-      div.books-header
-        img
+      div
+        div.authors-header
+          a authors
+          img
+        div.books-header
+          a(href="/books") books
+          img
+      a.add-btn(href="books/new") add new book
     section.main-contain-books
       section.books-list
         each book in books
@@ -20,9 +24,13 @@ block content
             div.book-cover-container
               img.book-cover(src=book.cover)
             div.each-book-header
+              span.book-header-btn
+                a.edit-btn edit
+              span.book-header-btn
+                a.remove-btn remove
               h2.book-title=book.title
               each author in book.authors
                 div.author= author.first_name + ' ' + author.last_name
               h3.genre=book.genre
-              p.book-description=book.description
+            p.book-description=book.description
   footer

@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/:id', function(req, res, next) {
-  res.render('authors', { title: 'gReads | AUTHORS' });
-});
+// render()
+
+
+router.post('/', function(req,res,next){
+  queries.newBook(req.body).then((book)=>{
+    if(book){res.json(book)}
+    else{next(new Error('invalid book format'))}
+  })
+})
 
 module.exports = router;
