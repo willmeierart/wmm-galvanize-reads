@@ -19,7 +19,8 @@ const consolidate = (authors)=>{
       allAuthorsWithBooks.push(authorWithBooks)
       fullAuthorsInfo[author.last_name] = authorWithBooks
     }
-    if(!bookAcc[author.titl  = true
+    if(!bookAcc[author.title]){
+      bookAcc[author.title] = true
       fullAuthorsInfo[author.last_name].books.push(
         {
           id: author.book_id,
