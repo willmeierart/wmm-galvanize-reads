@@ -60,7 +60,6 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next){
   queries.newBook(req.body).then(book=>res.json(book))
 })
-
 router.get('/:id/delete', function(req,res,next){
   queries.getOneBook(req.params.id).then((book)=>{
     // res.json(consolidate(book))

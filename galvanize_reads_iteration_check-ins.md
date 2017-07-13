@@ -12,22 +12,22 @@
 
 ## Books - Interaction 2
 
-* [ ] Add a book
-* [ ] Check-in with an Instructor
+* [x] Add a book
+* [x] Check-in with an Instructor
 
 ## Books - Interaction 3
 
-* [ ] Delete a book
-* [ ] Check-in with an Instructor
+* [x] Delete a book
+* [x] Check-in with an Instructor
 
 ## Books - Interaction 4
 
-* [ ] Edit a book
+* [x] Edit a book
 * [ ] Check-in with an Instructor
 
 ## Books - Interaction 5
 
-* [ ] Link to specific book
+* [x] Link to specific book
 * [ ] Check-in with an Instructor
 
 ## Authors - Interaction 6

@@ -49,17 +49,6 @@ $(() => {
     }
   })
   $('.editbook-form').submit((e)=>{
-  // $('.edit-book-submit-button').click((e)=>{
-    // e.preventDefault()
-    // Promise.all(
-    //   $('.author-list').text().split('\n').map((name)=>{
-    //     return $.get(`${baseURL}authors/${name.split(' ')[0]}`)
-    //   })
-    // ).then((res)=>{
-    //   console.log(res);
-    // })
-
-    // console.log(authors);
     e.preventDefault()
     console.log($('#input-title').first().val());
     const bookObj = {

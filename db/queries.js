@@ -6,6 +6,12 @@ const bookJoina=(book)=>{
   .select('books.id as id', 'books.title', 'books.description', 'books.genre', 'books.cover_url', 'authors.id as author_id', 'authors.first_name', 'authors.last_name', 'authors.portrait_url', 'authors.biography')
 }
 
+const joinAuthors=(author)=>{
+  return author.join('book_authors', 'book_authors.author_id', 'authors.id')
+  .join('books', 'books.id', 'book_authors.book_id')
+  .select('authors.id as id', 'books.title', 'books.description', 'books.genre', 'books.cover_url', 'books.id as book_id', 'authors.first_name', 'authors.last_name', 'authors.portrait_url', 'authors.biography')
+}
+
 module.exports = {
   getAllBooks: function(){
   return bookJoina(knex.select('*').from('books'))
@@ -38,7 +44,7 @@ module.exports = {
   },
 
   getAllAuthors: function(){
-    return knex.select('*').from('authors')
+    return joinAuthors(knex.select('*').from('authors'))
   },
 
   getOneAuthor: function(id){
