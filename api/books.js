@@ -48,7 +48,6 @@ router.get('/new', function (req,res){
   queries.getAllAuthors().then((authors)=>{
     res.render('newbook', {'authors': authors})
   })
-
 })
 router.get('/:id', function(req, res, next) {
   queries.getOneBook(req.params.id).then((book)=>{

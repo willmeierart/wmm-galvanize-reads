@@ -2,7 +2,11 @@ var authorIDs = []
 $(() => {
   const baseURL = getHostURL()
   const currentURL = window.location.href
+  const authorIDs = []
   const authorNames = []
+  const bookIDs = []
+  const bookNames = []
+
 
 
   const isValidURL=(url)=>{
@@ -16,6 +20,16 @@ $(() => {
     const url =()=>{return isValidURL(book.cover_url) }
     return title && genre && description && url
   }
+  const isValidName=(name)=>{
+   return typeof name == 'string' && name.split(' ').length == 2
+  }
+  const isValidAuthor=(author)=>{
+    const name =()=>{return isValidName(author.name)}
+    const url =()=>{return isValidURL(author.portrait_url)}
+    const biography =()=>{return typeof author.biography == 'string'}
+    return name && url && biography
+  }
+
 
   $('.book-cover').click(function(){
     const id = $(this).attr('data-id')
@@ -31,9 +45,19 @@ $(() => {
     if (!authorIDs.includes(authorID)) {
       authorIDs.push(authorID)
     }
-    // console.log($('.author-select option:selected')[0]);
-    // console.log(authorIDs);
     $('.author-list').first().text(`${authorNames.join('\n')}`)
+  })
+
+  $('.add-book-btn').click((e) => {
+    const book = $('.book-select option:selected').first().text()
+    const bookID = parseInt($('.book-select option:selected').first().attr('data-id'))
+    if (!bookNames.includes(book)) {
+      bookNames.push(book)
+    }
+    if (!bookIDs.includes(bookID)) {
+      bookIDs.push(bookID)
+    }
+    $('.book-list').first().text(`${bookNames.join('\n')}`)
   })
 
   $('.newbook-form').submit((e) => {
@@ -53,6 +77,28 @@ $(() => {
       })
     }
   })
+
+
+
+
+  $('.newauthor-form').submit((e)=>{
+    e.preventDefault()
+    const name = $('#input-author-name').first().val().split(' ')
+    const authorObj = {
+      first_name: name[0],
+      last_name: name[1],
+      portrait_url: $('#input-portrait').first().val(),
+      biography: $('#input-biography').first().val(),
+      books: bookIDs
+    }
+    if (isValidAuthor(authorObj)){
+      $.post(`${baseURL}authors`, authorObj).then((res) => {
+        console.log(res)
+        return res.id
+      })
+    }
+  })
+
   $('.editbook-form').submit((e)=>{
     e.preventDefault()
     console.log($('#input-title').first().val());

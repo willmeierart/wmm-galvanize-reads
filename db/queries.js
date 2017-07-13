@@ -43,6 +43,27 @@ module.exports = {
     })
   },
 
+  newAuthor:function(author){
+    const cleanAuthor = {
+      first_name: author.first_name,
+      last_name: author.last_name,
+      biography: author.biography,
+      portrait_url: author.portrait_url
+    }
+    return knex('authors').insert(cleanAuthor, '*').then((res)=>{
+      const author_id = res[0].id
+      return Promise.all(
+        author['books[]'].map((book)=>{
+          const joina = {
+            author_id: author_id,
+            book_id: book
+          }
+          return knex('book_authors').insert(joina, '*')
+        })
+      ).then(()=>res[0])
+    })
+  },
+
   getAllAuthors: function(){
     return joinAuthors(knex.select('*').from('authors'))
   },

@@ -44,9 +44,13 @@ router.get('/', function(req,res,next){
     res.render("authors",{'authors':consolidate(authors)})
   })
 })
-router.get('/:id', function(req,res,next){
-  queries.getOneAuthor(req.params.id).then(author=>res.json(author))
-
+router.get('/new', function (req,res){
+  queries.getAllBooks().then((books)=>{
+    res.render('newauthor', {'books': books})
+  })
+})
+router.post('/', function(req, res, next){
+  queries.newAuthor(req.body).then(author=>res.json(author))
 })
 
 //

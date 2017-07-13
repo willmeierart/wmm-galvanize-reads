@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  header(class="main-header")
+    nav
+      img(src="/images/better-logo.png", alt="book-logo", class="header-logo")
+      a(href="/" class="main-title")
+        h1 gReads
+      div.nav-accent-img-container
+  main
+    section.sub-header
+      div
+        div.authors-header
+          a(href="/authors") authors
+          img
+        div.books-header
+          a(href="/books") books
+          img
+    section.newbook-main
+      form.newauthor-form
+        label(for='author-name') Name
+        input(type='text' name='author-name'  autocomplete='off' id='input-author-name' required)
+        label(for='portrait') Portrait Image URL
+        input(type='text' name='portrait' id='input-portrait' required)
+        label(for='biography') Biography
+        textarea(name='biography' rows='10' id='input-biography' required)
+        label(for='books') Books
+          div.authorOne
+            textarea.book-list(required disabled name='books', placeholder=books[0].title, rows='5')
+            button.remove-btn-form(type='button') remove
+            button(type='button' class="add-book-btn") add book
+        select.book-select
+          each book in books
+            option(value="book" data-id=book.id)=book.title
+        button(type='submit' class='.add-book-submit-btn') add author
