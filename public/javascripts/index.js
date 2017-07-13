@@ -1,5 +1,6 @@
 $(() => {
   const baseURL = getHostURL()
+  const currentURL = window.location.href
   const authorNames = []
   const authorIDs = []
   $('.add-author-btn').click((e) => {
@@ -49,9 +50,23 @@ $(() => {
     }
   })
 
-  $('.remove-btn').click((e)=>{
-    e.preventDefault()
-    console.log(e.target)
+  $('.remove-btn').click(function(){
+    // console.log($(this).attr('data-id'))
+    let bookpath = $(this).attr('data-id')
+    window.location.href=`${baseURL}books/${bookpath}/delete`
+  })
+
+  $('.delete-book-btn').click(function(){
+    const id = getIdFromURL(currentURL)
+    console.log(id);
+    return $.ajax({
+      url:`${baseURL}books/${id}`,
+      type: 'DELETE',
+      success: function(){
+        console.log('success');
+        window.location.href = `${baseURL}books`
+      }
+    })
   })
 
   function getHostURL() {
@@ -61,4 +76,20 @@ $(() => {
       return 'https://wmm-galvanize-reads.herokuapp.com/'
     }
   }
+  function getIdFromURL(current){
+    let newURLarr = current.split('/').reverse()
+    let id = 0
+    console.log(newURLarr);
+    for(let i of newURLarr){
+      if (typeof parseInt(i) == 'number' && !isNaN(i) && i!=null){
+        id = i
+        return id
+      }
+
+      console.log(id);
+
+    }
+
+  }
+
 })
