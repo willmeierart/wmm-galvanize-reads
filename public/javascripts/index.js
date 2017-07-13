@@ -76,6 +76,7 @@ $(() => {
         return res.id
       })
     }
+    window.location.href = `${baseURL}books`
   })
 
 
@@ -97,6 +98,7 @@ $(() => {
         return res.id
       })
     }
+    window.location.href = `${baseURL}authors`
   })
 
   $('.editbook-form').submit((e)=>{
