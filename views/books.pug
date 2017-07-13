@@ -25,7 +25,7 @@ block content
               img.book-cover(src=book.cover)
             div.each-book-header
               span.book-header-btn
-                a.edit-btn edit
+                a(class="edit-btn", data-id=book.id) edit
               span.book-header-btn
                 a(class="remove-btn", data-id=book.id) remove
               h2.book-title=book.title

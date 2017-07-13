@@ -304,3 +304,9 @@ footer{
 .remove-btn-form{
   /*float:right;*/
 }
+
+a, button{
+  text-decoration: none !important;
+  color:inherit !important;
+  cursor:pointer !important;
+}

@@ -43,6 +43,10 @@ const consolidate = (books)=>{
 router.get('/', function(req,res,next){
   queries.getAllBooks().then(book=>res.json(consolidate(book)))
 })
+router.get('/:id', function(req,res,next){
+  queries.getOneAuthor(req.params.id).then(author=>res.json(author)) 
+
+})
 
 //
 // router.post('/', function(req,res,next){

@@ -29,8 +29,8 @@ block content
         label(for='authors') Authors
           div.authorOne
             textarea.author-list(required disabled name='authors', placeholder=authors[0].first_name + " " + authors[0].last_name, rows='5')
-            span.remove-btn-form remove
-        button(type='button' class="add-author-btn") add author
+            button.remove-btn-form(type='button') remove
+            button(type='button' class="add-author-btn") add author
         select.author-select
           each author in authors
             option(value="author" data-id=author.id)=author.first_name + ' ' + author.last_name

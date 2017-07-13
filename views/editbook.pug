@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  header(class="main-header")
+    nav
+      img(src="/images/better-logo.png", alt="book-logo", class="header-logo")
+      a(href="/" class="main-title")
+        h1 gReads
+      div.nav-accent-img-container
+  main
+    section.sub-header
+      div
+        div.authors-header
+          a(href="/authors") authors
+          img
+        div.books-header
+          a(href="/books") books
+          img
+    section.newbook-main
+      script.
+        var books=!{JSON.stringify(books[0])}
+        for(let i of books.authors){
+          authorIDs.push(i.id)
+        }
+        
+      each book in books
+        form.editbook-form
+          label(for='title') Title
+          input(type='text' name='title'  autocomplete='off' data-id=book.id id='input-title' required value=book.title)
+          label(for='genre') Genre
+          input(type='text' name='genre' id='input-genre' required value=book.genre)
+          label(for='cover') Cover Image URL
+          input(type='text' name='cover' id='input-cover' required value=book.cover)
+          label(for='description') Description
+          textarea(name='description' rows='10' id='input-description' required)=book.description
+          label(for='authors') Authors
+            div.authorOne
+              textarea.author-list(required disabled name='authors', rows='5')
+                each author in book.authors
+                  = author.first_name + ' '+ author.last_name + "\n"
+              button.remove-btn-form(type='button') remove author
+              button(type='button' class="add-author-btn") add author
+          select.author-select-edit
+          button(type='submit' class='.edit-book-submit-btn') edit book

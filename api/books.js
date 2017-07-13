@@ -7,6 +7,7 @@ const consolidate = (books)=>{
   const fullBooksInfo = {}
    books.forEach((book)=>{
     const authorAcc = {}
+    // const allAuthors = {}
     if(!fullBooksInfo[book.title]){
       const bookWithAuthors = {
         id: book.id,
@@ -46,19 +47,17 @@ router.get('/', function(req,res,next){
 })
 router.get('/new', function (req,res){
   queries.getAllAuthors().then((authors)=>{
-    // res.json(authors)
     res.render('newbook', {'authors': authors})
   })
 
 })
 router.get('/:id', function(req, res, next) {
   queries.getOneBook(req.params.id).then((book)=>{
-    // consolidate(book)
+
     res.render('books', {"books": consolidate(book)})
   })
 })
 router.post('/', function(req, res, next){
-  // console.log(req.body);
   queries.newBook(req.body).then(book=>res.json(book))
 })
 
@@ -72,14 +71,16 @@ router.delete('/:id', function(req,res,next){
   queries.deleteBook(req.params.id).then((book)=>{
     res.json({deleted:true})
   })
-
 })
-
-
-// router.post('/', function (req,res,next){
-//   queries.addJoiner(req.body).then(book=>book)
-// })
-
+router.get('/:id/edit', function(req,res,next){
+  queries.getOneBook(req.params.id).then((book)=>{
+    // res.json(consolidate(book))
+    res.render('editbook', {"books": consolidate(book)})
+  })
+})
+router.put('/:id', function(req,res,next){
+  queries.editBook(req.params.id, req.body).then(book=>res.render('books', {"books": consolidate(book)}))
+})
 
 
 
