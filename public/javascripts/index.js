@@ -17,6 +17,11 @@ $(() => {
     return title && genre && description && url
   }
 
+  $('.book-cover').click(function(){
+    const id = $(this).attr('data-id')
+    window.location.href = `${baseURL}books/${id}`
+  })
+
   $('.add-author-btn').click((e) => {
     const author = $('.author-select option:selected').first().text()
     const authorID = parseInt($('.author-select option:selected').first().attr('data-id'))

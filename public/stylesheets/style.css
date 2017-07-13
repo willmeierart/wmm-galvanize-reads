@@ -193,7 +193,7 @@ footer{
 
 }
 
-.authors-header, .books-header{
+.authors-header, .books-header, .add-btn{
   /*display: flex;*/
   display: inline-block;
   background:white;
@@ -305,7 +305,7 @@ footer{
   /*float:right;*/
 }
 
-a, button{
+a, button, .book-cover{
   text-decoration: none !important;
   color:inherit !important;
   cursor:pointer !important;

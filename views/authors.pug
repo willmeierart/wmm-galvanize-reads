@@ -18,17 +18,17 @@ block content
     section.main-contain-books
       section.books-list
         each author in authors
-          div.each-author-sec
-            div.author-portrait-container
-              img.author-portrait(src=author.portrait_url)
-            div.each-author-header
-              span.author-header-btn
+          div.each-book-sec
+            div.book-cover-container
+              img.book-cover(src=author.portrait_url)
+            div.each-book-header
+              span.book-header-btn
                 a(class="edit-btn", data-id=author.id) edit
-              span.author-header-btn
+              span.book-header-btn
                 a(class="remove-btn", data-id=author.id) remove
-              h2.author-name=author.first_name + ' ' + author.last_name
+              h2.book-title=author.first_name + ' ' + author.last_name
               each book in author.books
-                div.author=book.title
-              h3.genre=book.genre
+                div.book=book.title
+              h3.genre=author.genre
             p.book-description=author.biography
   footer

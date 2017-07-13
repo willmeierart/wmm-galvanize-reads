@@ -7,7 +7,6 @@ const consolidate = (books)=>{
   const fullBooksInfo = {}
    books.forEach((book)=>{
     const authorAcc = {}
-    // const allAuthors = {}
     if(!fullBooksInfo[book.title]){
       const bookWithAuthors = {
         id: book.id,
@@ -20,8 +19,8 @@ const consolidate = (books)=>{
       allBooksWithAuthors.push(bookWithAuthors)
       fullBooksInfo[book.title] = bookWithAuthors
     }
-    if(!authorAcc[book.first_name]){
-      authorAcc[book.first_name] = true
+    if(!authorAcc[book.last_name]){
+      authorAcc[book.last_name] = true
       fullBooksInfo[book.title].authors.push(
         {
           id: book.author_id,

@@ -11,18 +11,19 @@ block content
     section.sub-header
       div
         div.authors-header
-          a authors
+          a(href="/authors") authors
           img
         div.books-header
           a(href="/books") books
           img
-      a.add-btn(href="books/new") add new book
+      div
+        a.add-btn(href="books/new") add new book
     section.main-contain-books
       section.books-list
         each book in books
           div.each-book-sec
             div.book-cover-container
-              img.book-cover(src=book.cover)
+              img.book-cover(src=book.cover data-id=book.id)
             div.each-book-header
               span.book-header-btn
                 a(class="edit-btn", data-id=book.id) edit

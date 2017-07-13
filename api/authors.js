@@ -7,7 +7,7 @@ const consolidate = (authors)=>{
   const fullAuthorsInfo = {}
    authors.forEach((author)=>{
     const bookAcc = {}
-    if(!fullAuthorsInfo[author.first_name]){
+    if(!fullAuthorsInfo[author.last_name]){
       const authorWithBooks = {
         id: author.id,
         first_name: author.first_name,
@@ -17,11 +17,11 @@ const consolidate = (authors)=>{
         books: []
       }
       allAuthorsWithBooks.push(authorWithBooks)
-      fullAuthorsInfo[author.first_name] = authorWithBooks
+      fullAuthorsInfo[author.last_name] = authorWithBooks
     }
-    if(!bookAcc[author.first_name]){
-      bookAcc[author.first_name] = true
-      fullAuthorsInfo[author.first_name].books.push(
+    if(!bookAcc[author.title]){
+      bookAcc[author.title] = true
+      fullAuthorsInfo[author.last_name].books.push(
         {
           id: author.book_id,
           title: author.title,
@@ -38,7 +38,11 @@ const consolidate = (authors)=>{
 // render()
 
 router.get('/', function(req,res,next){
-  queries.getAllAuthors().then(authors=>res.render('authors',{'authors':consolidate(authors)}))
+  queries.getAllAuthors().then((authors)=>{
+    console.log(consolidate(authors))
+    // res.json(consolidate(authors))
+    res.render("authors",{'authors':consolidate(authors)})
+  })
 })
 router.get('/:id', function(req,res,next){
   queries.getOneAuthor(req.params.id).then(author=>res.json(author))
